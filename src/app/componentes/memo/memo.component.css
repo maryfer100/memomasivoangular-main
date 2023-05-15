@@ -1,0 +1,57 @@
+mat-card-title{
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align:center;
+  }
+
+  mat-card{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    justify-content: center;
+    }
+
+    mat-grid-list{
+      padding-bottom: 5px;
+    }
+
+  .file-input {
+      display: none;
+      align-content:center;
+    }
+
+    .example-container {
+      width: 800px;
+      height: 200px;
+    }
+    .widt-complete {
+      width: 900px;
+      font-size: 14px;
+  }
+
+  .style-hashtag{
+    text-align:center;
+    padding: 10px;
+  }
+
+  .example-full-width {
+    width: 100px;
+  }
+
+  .style-text{
+    width: 600px;
+    height: 30px;
+    padding: 10px;
+  }
+
+  .style.button{
+    padding: 5px;
+    align-content: flex-end;
+  }
+
+  .style-folio{
+    outline: 5px auto #1A7CFF;
+  }
+
+  .dialog-hide{
+    display: none;
+  }

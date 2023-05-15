@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<mat-card>
+    <mat-card-title>GENERACION DE CORREO MASIVO</mat-card-title>
+        <mat-card-content>
+            <form [formGroup]="FormMemo">
+                <mat-grid-list cols="7" colWidth="200px" colHeight="100px">
+                    <mat-grid-tile
+                        [colspan]="4"
+                        [rowspan]="1">
+                    </mat-grid-tile>
+                    <mat-grid-tile
+                        [colspan]="2"
+                        [rowspan]="1">
+                            <button mat-raised-button color="primary" style = "width:150px" (click)="inputfile.click()">CARGAR</button>
+                            <input type="file" accept="*.*" #inputfile (change)="seleccionarArchivo($event)" hidden>
+                    </mat-grid-tile>
+                    <mat-grid-tile
+                        [colspan]="1"
+                        [rowspan]="1">
+                        <div class="style-hashtag style-folio"><label>FOLIO :{{ folio }}</label></div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+              <div class="style-hashtag"><app-grid></app-grid></div>
+               {{ arraydatos[5555] }}
+
+                    <mat-grid-list cols="7" colWidth="200px" colHeight="100px">
+                            <mat-grid-tile
+                                [colspan]="2"
+                                [rowspan]="1">
+                                        <mat-form-field class="style-text" appearance="outline">
+                                            <mat-label>Centro emisor</mat-label>
+                                            <mat-select [disabled] ="true" [(value)]="selectedCentros">
+                                                <!-- <mat-option  *ngFor="let centros of centros" [value]="centros">{{centros.viewValue}}</mat-option> -->
+                                                <mat-option [value]="centros.value" *ngFor="let centros of centros">{{ centros.viewValue }}</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </mat-grid-tile>
+                            <mat-grid-tile
+                                [colspan]="5"
+                                [rowspan]="1">
+                                <mat-form-field class="style-text" appearance="outline">
+                                    <mat-label>Asunto :</mat-label>
+                                    <input [formControl]="asunto" #asuntomemo required matInput placeholder="Escriba el asunto del correo">
+                                </mat-form-field>
+                            </mat-grid-tile>
+                    </mat-grid-list>
+                    <div class="style-hashtag">
+                        <mat-form-field  class = "widt-complete" appearance="outline" >
+                            <mat-label> Escriba el mensaje del correo </mat-label>
+                            <textarea  [formControl]="mensaje" #mensajememo required matInput  placeholder = "Mensaje a enviar." cdkTextareaAutosize = "true" cdkAutosizeMinRows="6" cdkAutosizeMaxRows="6"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <!-- <div class = "style-button">              -->
+                    <mat-grid-list cols="7" colWidth="200px" rowHeight="50px">
+                            <mat-grid-tile
+                                [colspan]="5"
+                                [rowspan]="1">
+                               <button [disabled] ="!FormMemo.valid" mat-raised-button color="primary" style="width: 200px;align-content: flex-end;" (click)="openDialog(asuntomemo.value,mensajememo.value)">ENVIAR MEMO</button>
+                            </mat-grid-tile>
+                            <mat-grid-tile
+                                [colspan]="2"
+                                [rowspan]="1">
+                                <div class="estilo"><label for="">TOTAL : {{ total }}</label></div>
+                                <div class="style-hashtag"><label>  IP :{{ ipCliente }}</label></div>
+                            </mat-grid-tile>
+                    </mat-grid-list>
+                    <div class="dialog-hide">
+                      <app-dialogyesno></app-dialogyesno>
+                    </div>
+
+            </form>
+        </mat-card-content>
+</mat-card>
+</body>
+</html>

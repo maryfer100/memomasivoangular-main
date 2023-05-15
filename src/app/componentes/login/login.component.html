@@ -1,0 +1,35 @@
+
+<div class="container">
+        <div class="div-center">
+            <div *ngIf="loading">
+                <mat-spinner></mat-spinner>
+            </div>
+
+            <mat-card class="contact-card">
+                <mat-card-header>
+                    <mat-card-title>LOGIN</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                <form [formGroup]="newForm">
+                    <mat-form-field appearance="outline" class="input-text">
+                        <mat-label>Escribe tu numero de empleado</mat-label>
+                        <input matInput type="text" #emp [formControl]="empleado" required ngModel maxlength="8" ngModel pattern="^[0-9]{0,8}$" >
+                        <mat-hint align="end">{{emp.value.length}} / 8</mat-hint>
+                        <mat-error *ngIf="empleado.invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                    <br>
+                        <mat-form-field appearance="outline" class="input-text">
+                                <mat-label>Escriba su password</mat-label>
+                                <input matInput [type]="hide ? 'password' : 'text'"  #passw [formControl]="password" required ngModel pattern="^[0-9]{0,4}$" >
+                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" >
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                                <mat-error *ngIf="password.invalid || password.untouched">{{getErrorMsg()}}</mat-error>
+                        </mat-form-field>
+                    <br><br>
+                        <button  type="button" [disabled] ="!newForm.valid" class="button-ng" mat-raised-button (click)="login(emp.value,passw.value)">INGRESAR</button>
+                </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>

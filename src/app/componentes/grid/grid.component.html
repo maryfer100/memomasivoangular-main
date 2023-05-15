@@ -1,0 +1,13 @@
+<ag-grid-angular
+        #myGrid
+        style="width: 900px; height: 220px; align-content: center;"
+        class="ag-theme-alpine"
+        [columnDefs]="columnDefs"
+        [getRowId]="getRowId"
+        [defaultColDef]="defaultColDef"
+        [rowData]="rowData | async"
+        [rowSelection]="'multiple'"
+        [animateRows]="true"
+        (gridReady)="onGridReady($event)"
+        (cellClicked)="onCellClicked($event)">
+</ag-grid-angular>
